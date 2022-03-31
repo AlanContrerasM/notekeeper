@@ -3,6 +3,8 @@
 A new Flutter project.
 
 ## Getting Started
+'flutter create'
+`flutter create`
 
 This project is a starting point for a Flutter application.
 

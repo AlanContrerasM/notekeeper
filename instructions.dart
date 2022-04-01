@@ -24,9 +24,28 @@
 // flutter clean ios
 // flutter pub get
 
+//if it ever asks for bundle id, do com.domain.appname
+
 
 // ---- Android Development ----
 // you will get an error for minSDK version, set at least 21, you get less errors
 //also error for multidex, on android/app/ graddle, set the minSDK version, and also set the Multidex, 
 //and add implementation to the bottom
 
+
+//firebase
+// # Install the CLI if not already done so, this is done once per machine
+// curl -sL https://firebase.tools | bash
+//also
+//npm install -g firebase-tools
+
+//For backend we are gonna use Firebase, and FlutterFire.
+// dart pub global activate flutterfire_cli
+//*Make sure to follow instructions on the terminal to update path, this is done once. per computer
+
+//Run
+//firebase login
+
+// # Run the `configure` command, select a Firebase project and platforms
+// flutterfire configure
+//create a new project, and use an original id

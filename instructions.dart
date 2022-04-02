@@ -60,3 +60,5 @@
 // if using firebase do the imports on top of the page, and follow some instructions written on
 // firebase_options.dart
 //on your project in firebase console, webpage, turn on authentication, and enable email and password combination
+
+//Enable email verification

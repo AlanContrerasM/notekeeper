@@ -36,7 +36,7 @@
 //firebase
 // # Install the CLI if not already done so, this is done once per machine
 // curl -sL https://firebase.tools | bash
-//also
+//or
 //npm install -g firebase-tools
 
 //For backend we are gonna use Firebase, and FlutterFire.
@@ -49,3 +49,7 @@
 // # Run the `configure` command, select a Firebase project and platforms
 // flutterfire configure
 //create a new project, and use an original id
+//if getting an error, create the project on console firebase, and then run the flutterfire configure
+
+
+//Actually Work on Dart.

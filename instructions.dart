@@ -10,6 +10,9 @@
 // *cloud_firestore
 // *firebase_analytics
 
+//if downloading or cloning.
+// after cloning
+//flutter pub get
 // ----  Setting IOS App ----
 // *Preparing for releasing later
 // You need an IOS developper account, you need to apply and pay money
@@ -53,3 +56,7 @@
 
 
 //Actually Work on Dart.
+
+// if using firebase do the imports on top of the page, and follow some instructions written on
+// firebase_options.dart
+//on your project in firebase console, webpage, turn on authentication, and enable email and password combination

@@ -1,9 +1,14 @@
 import 'package:notekeeper/services/auth/auth_user.dart';
 import 'package:notekeeper/services/auth/auth_provider.dart';
+import 'package:notekeeper/services/auth/firebase_auth_provider.dart';
 
+//A service is needed cause later on it might be needed to fuse different providers
+//or add extra stuff, if app is simple you can definitely do without.
 class AuthService implements AuthProvider {
   final AuthProvider provider;
   const AuthService(this.provider);
+
+  factory AuthService.firebase() => AuthService(FirebaseAuthProvider());
 
   @override
   Future<AuthUser> createUser({
@@ -13,7 +18,6 @@ class AuthService implements AuthProvider {
       provider.createUser(email: email, password: password);
 
   @override
-  // TODO: implement currentUser
   AuthUser? get currentUser => provider.currentUser;
 
   @override
@@ -28,4 +32,7 @@ class AuthService implements AuthProvider {
 
   @override
   Future<void> sendEmailVerification() => provider.sendEmailVerification();
+
+  @override
+  Future<void> initialize() => provider.initialize();
 }

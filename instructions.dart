@@ -69,3 +69,5 @@
 //You can also set up tests, if you want to be more professional.
 // Unit Tests, ugh... on test folders, There could be unit tests, widget, integration tests
 //flutter pub add test --dev
+//to test them
+//fluter test test/auth_test.dart

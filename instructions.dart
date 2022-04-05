@@ -72,3 +72,20 @@
 //to test them
 //fluter test test/auth_test.dart
 //test1
+
+//SQLite 
+//we'll download DB browser for SQLite 
+//snap install sqlitebrowser
+//open the db browser
+//new-database, call it testing or whatever
+//start adding fields, 
+//id, integer, not null, primary key, autoincrement
+//email, text, nn, u
+//then lets create a table for notes, id, user_id which has a foreign key id from users
+//has text, and an optional is_synced_with_cloud that has a default value int 0, which means false.
+
+//to copy these tables or create this in our app, we need a few dependencies
+//fluter pub add and do all three sqflite, path_provider, path
+
+//create a new file in services, crud/notes_service.dart
+//for coding the app and sql code, you can copy the commands from db browser, select the table and right click, modify to see code

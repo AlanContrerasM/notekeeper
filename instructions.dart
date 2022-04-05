@@ -62,3 +62,10 @@
 //on your project in firebase console, webpage, turn on authentication, and enable email and password combination
 
 //Enable email verification
+
+//code like crazy, you can set up basic email auth very simple, or extract your logic to a service
+//so more logic and extra services like Firebase are outside your UI layer
+
+//You can also set up tests, if you want to be more professional.
+// Unit Tests, ugh... on test folders, There could be unit tests, widget, integration tests
+//flutter pub add test --dev

@@ -4,7 +4,7 @@ import 'package:notekeeper/constants/routes.dart';
 import 'package:notekeeper/services/auth/auth_service.dart';
 import 'package:notekeeper/services/crud/notes_service.dart';
 
-import '../enums/menu_actions.dart'; //as devtools is optional
+import '../../enums/menu_actions.dart'; //as devtools is optional
 
 class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -36,8 +36,14 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main UI'),
+        title: const Text('Your Notes'),
         actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(newNoteRoute);
+            },
+            icon: const Icon(Icons.add),
+          ),
           PopupMenuButton<MenuAction>(onSelected: (value) async {
             devtools.log(value.toString());
             switch (value) {

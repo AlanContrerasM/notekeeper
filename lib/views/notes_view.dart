@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 import 'package:notekeeper/constants/routes.dart';
 import 'package:notekeeper/services/auth/auth_service.dart';
+import 'package:notekeeper/services/crud/notes_service.dart';
 
 import '../enums/menu_actions.dart'; //as devtools is optional
 
@@ -13,33 +14,74 @@ class NotesView extends StatefulWidget {
 }
 
 class _NotesViewState extends State<NotesView> {
+  // expose the user email
+  late final NotesService _notesService;
+  //we know it should be there cause otherwise there is no access to this view
+  String get userEmail => AuthService.firebase().currentUser!.email!;
+  //open the database
+  @override
+  void initState() {
+    _notesService = NotesService();
+    _notesService.open();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _notesService.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Main UI'),
-          actions: [
-            PopupMenuButton<MenuAction>(onSelected: (value) async {
-              devtools.log(value.toString());
-              switch (value) {
-                case MenuAction.logout:
-                  final shouldLogout = await showLogoutDialog(context);
-                  if (shouldLogout) {
-                    await AuthService.firebase().logOut();
-                    Navigator.of(context)
-                        .pushNamedAndRemoveUntil(loginRoute, (route) => false);
+      appBar: AppBar(
+        title: const Text('Main UI'),
+        actions: [
+          PopupMenuButton<MenuAction>(onSelected: (value) async {
+            devtools.log(value.toString());
+            switch (value) {
+              case MenuAction.logout:
+                final shouldLogout = await showLogoutDialog(context);
+                if (shouldLogout) {
+                  await AuthService.firebase().logOut();
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(loginRoute, (route) => false);
+                }
+                break;
+            }
+          }, itemBuilder: (context) {
+            return [
+              const PopupMenuItem<MenuAction>(
+                  value: MenuAction.logout, child: Text('Log out'))
+            ];
+          })
+        ],
+      ),
+      body: FutureBuilder(
+        future: _notesService.getOrCreateUser(email: userEmail),
+        builder: (context, snaphot) {
+          switch (snaphot.connectionState) {
+            case ConnectionState.done:
+              return StreamBuilder(
+                stream: _notesService.allNotes,
+                builder: (context, snapshot) {
+                  switch (snaphot.connectionState) {
+                    case ConnectionState.done:
+                      return const Text('your notes');
+                    case ConnectionState.waiting:
+                      return const Text('Waiting fo all notes...');
+                    default:
+                      return const Center(child: CircularProgressIndicator());
                   }
-                  break;
-              }
-            }, itemBuilder: (context) {
-              return [
-                const PopupMenuItem<MenuAction>(
-                    value: MenuAction.logout, child: Text('Log out'))
-              ];
-            })
-          ],
-        ),
-        body: const Text('Helo World!'));
+                },
+              );
+            default:
+              return const CircularProgressIndicator();
+          }
+        },
+      ),
+    );
   }
 }
 

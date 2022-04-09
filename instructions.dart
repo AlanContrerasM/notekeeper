@@ -89,3 +89,9 @@
 
 //create a new file in services, crud/notes_service.dart
 //for coding the app and sql code, you can copy the commands from db browser, select the table and right click, modify to see code
+//code the service for notes, notes_service.dart
+
+//now we can create a stream, this stream will be like the controller or manager 
+//update our functions to also update cache when changing the notes database
+//create right there on our notesService, which is our service for sqlite at this point access for users.
+//Now lets prepare our notes views

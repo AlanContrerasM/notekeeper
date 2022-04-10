@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notekeeper/services/auth/auth_service.dart';
-
-import '../../services/crud/notes_service.dart';
+import 'package:notekeeper/services/crud/notes_service.dart';
 
 class NewNoteView extends StatefulWidget {
   const NewNoteView({Key? key}) : super(key: key);
@@ -57,16 +56,17 @@ class _NewNoteViewState extends State<NewNoteView> {
     }
   }
 
-  //in modern software applications we dont have a save button.
   void _saveNoteIfTextNotEmpty() async {
     final note = _note;
     final text = _textController.text;
+    print(await _notesService.getAllNotes());
     if (note != null && text.isNotEmpty) {
       await _notesService.updateNote(
         note: note,
         text: text,
       );
     }
+    print(await _notesService.getAllNotes());
   }
 
   @override

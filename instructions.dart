@@ -110,3 +110,7 @@
 // "text" field, of type string, and "user_id" of type string. press autogenerate on documentId
 //you can go ahead and delete that document right away
 //you can now code your cloud service, after coding it comment out your notes_service
+
+//in order to be able to share your notes you could add the share-plus plugin
+//flutter pub add share_plus
+//then do: flutter clean

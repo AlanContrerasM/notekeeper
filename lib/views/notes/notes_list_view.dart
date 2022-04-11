@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:notekeeper/services/crud/notes_service.dart';
+import 'package:notekeeper/services/cloud/cloud_note.dart';
 import 'package:notekeeper/utilities/dialogs/delete_dialog';
 
 //this is so we can know which arguments to pass to list view, from notes_view
 //as argument, ex. onDeleteNode: (note){do stuff..}
-typedef NoteCallback = void Function(DatabaseNote note);
+typedef NoteCallback = void Function(CloudNote note);
 
 class NotesListView extends StatelessWidget {
-  final List<DatabaseNote> notes;
+  final Iterable<CloudNote> notes;
   final NoteCallback onDeleteNote;
   final NoteCallback onTap;
 
@@ -24,7 +24,7 @@ class NotesListView extends StatelessWidget {
       itemCount: notes.length,
       itemBuilder: (context, index) {
         // print(allNotes);
-        final note = notes[index];
+        final note = notes.elementAt(index);
         return ListTile(
           onTap: () {
             onTap(note);

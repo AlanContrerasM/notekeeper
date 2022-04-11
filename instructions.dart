@@ -108,3 +108,5 @@
 //on the data tab, you can start a collection, write "notes" as id
 //now you can start your first document, its schema, for this project add 
 // "text" field, of type string, and "user_id" of type string. press autogenerate on documentId
+//you can go ahead and delete that document right away
+//you can now code your cloud service, after coding it comment out your notes_service

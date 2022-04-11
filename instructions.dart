@@ -95,3 +95,16 @@
 //update our functions to also update cache when changing the notes database
 //create right there on our notesService, which is our service for sqlite at this point access for users.
 //Now lets prepare our notes views
+
+
+//for firebase firestore integration... go to your console in firebase
+//enter your project, and on the side menu select firestore Database
+//create database, you can choose the test mode option for now, location should be us-central
+//unless you are somewhere else
+//after creating you can go to the rules tab, and change the permissions, effectively
+//turning it kind of into production, 
+//change the line of: request.time < timestamp.date(2022, 5, 10);
+//with: request.auth != null;
+//on the data tab, you can start a collection, write "notes" as id
+//now you can start your first document, its schema, for this project add 
+// "text" field, of type string, and "user_id" of type string. press autogenerate on documentId

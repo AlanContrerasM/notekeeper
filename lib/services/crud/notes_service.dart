@@ -29,6 +29,7 @@ class NotesService {
   //stream controller, it's basically a pipe, and this pipe contains a List of our notes
   late final StreamController<List<DatabaseNote>> _notesStreamController;
 
+  // created with our custom extension filter lib/extensions/list
   Stream<List<DatabaseNote>> get allNotes =>
       _notesStreamController.stream.filter((note) {
         final currentUser = _user;

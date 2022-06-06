@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notekeeper/services/cloud/cloud_note.dart';
-import 'package:notekeeper/utilities/dialogs/delete_dialog';
+import 'package:notekeeper/utilities/dialogs/delete_dialog.dart';
 
 //this is so we can know which arguments to pass to list view, from notes_view
 //as argument, ex. onDeleteNode: (note){do stuff..}
